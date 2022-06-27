@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  LambdaEC2statechangeSAM:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Calc.lambda_handler
+      Runtime: python3.9
+      Role: 'arn:aws:iam::960966738908:role/CloudwatchRoleforLambda'
+      Timeout: 120
+      # Events:
+      #   Trigger:
+      #     Type: CloudWatchEvent
+      #     Properties: 
+      #       Pattern: 
+      #         source: 
+      #           - "aws.ec2"
+      #         detail-type:
+      #           - EC2 Instance State-change Notification   
+      #         detail: 
+      #           result: 
+      #             - "anything-but": "approved"
+  # EventRuleCase1: 
+  #     Type: AWS::Events::Rule
+  #     Properties: 
+  #       Description: "EC2 event state changes"
+  #       EventPattern: 
+  #         source: 
+  #           - "aws.ec2"
+  #         detail-type:
+  #           - EC2 Instance State-change Notification   
+  #         detail: 
+  #           state: 
+  #               - pending
+  #               - running
+  #               - terminated
+  #               - stopped   
+  #       Targets: 
+  #         - 
+  #           Arn: 
+  #             Fn::GetAtt: 
+  #               - "LambdaEC2statechangeSAM"
+  #               - "Arn"
+  #           Id: "EventLambdaTarget1"
+  # PermissionForEventsToInvokeLambda: 
+  #     Type: AWS::Lambda::Permission
+  #     Properties: 
+  #       FunctionName: 
+  #         Ref: "LambdaEC2statechangeSAM"
+  #       Action: "lambda:InvokeFunction"
+  #       Principal: "events.amazonaws.com"
+  #       SourceArn: 
+  #         Fn::GetAtt: 
+  #           - "EventRuleCase1"
+  #           - "Arn"
