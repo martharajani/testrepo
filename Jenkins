@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Submit Stack'){
       steps{
-        sh "aws cloudformation create-stack --stack-name CalSam --template-body file://CalcSAM.yaml --tags Key=Name,Value=JenkinsCICD"
+        sh "aws cloudformation create-stack --stack-name CalSam --template-body file://package.yml --tags Key=Name,Value=JenkinsCICD"
       }
     }
   }
