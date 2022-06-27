@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Submit Stack'){
       steps{
-        sh "sam deploy --template-file package.yml --stack-name CalcSAM"
+        #sh "sam deploy --template-file package.yml --stack-name CalcSAM"
+        sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
       }
     }
   }
