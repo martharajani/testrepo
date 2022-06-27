@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Submit Stack'){
       steps{
-        sh "aws cloudformation create-stack --stack-name jenkinscfstack --template-body file://rajani.yaml --tags Key=Name,Value=JenkinsCICD"
+        sh "aws cloudformation create-stack --stack-name jenkinscfstack2 --template-body file://rajani.yaml --tags Key=Name,Value=JenkinsCICD"
       }
     }
   }
