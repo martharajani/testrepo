@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Submit Stack'){
       steps{
-        sh "sam deploy --template-file package.yml --stack-name Calcstack"
+        sh "sam deploy --template-file package.yml --stack-name CalcSAM"
       }
     }
   }
