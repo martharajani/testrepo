@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Submit Stack'){
       steps{
-        sh "aws cloudformation create-stack --stack-name rajanicalculator --template-body file://package.yml"
+        sh "aws cloudformation create-stack --stack-name rajanicalculator --template-body file://package.yml --capabilities CAPABILITY_AUTO_EXPAND"
         #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
       }
     }
