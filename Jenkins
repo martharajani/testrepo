@@ -1,10 +1,14 @@
 pipeline {
   agent any
   stages {
+   stage('test'){
+      steps{
+         sh "python -m unittest test_calculator.py"
+        #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
+      }
     stage('Submit Stack'){
       steps{
-        sh "python3 test_calculator.py"
-        sh "aws cloudformation create-stack --stack-name rajanicalculator --template-body file://package.yml --capabilities CAPABILITY_AUTO_EXPAND"
+         sh "aws cloudformation create-stack --stack-name rajanicalculator --template-body file://package.yml --capabilities CAPABILITY_AUTO_EXPAND"
         #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
       }
     }
