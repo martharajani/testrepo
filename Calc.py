@@ -19,6 +19,7 @@ def divide(x, y):
 
 def lambda_handler(event, context):
     print(add(4, 5))
+    print(add(int(event['a']), int(event['b'])))
     # print("Select operation.")
     # print("1.Add")
     # print("2.Subtract")
