@@ -4,7 +4,6 @@ pipeline {
     stage('Submit Stack'){
       steps{
          sh "sam deploy --template-file package.yml --stack-name rajanicalc"
-        #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
       }
     }
   }
