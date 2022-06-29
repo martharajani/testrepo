@@ -1,15 +1,9 @@
 pipeline {
   agent any
   stages {
-   stage('test'){
-      steps{
-         sh "python -m unittest test_calculator.Test_TestIncrementDecrement.test_calc_addition"
-        #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
-      }
     stage('Submit Stack'){
       steps{
          sh "sam deploy --template-file package.yml --stack-name rajanicalc"
-        #sh "aws cloudformation create-stack --stack-name SamTemplate --template-body file://rajani.yaml"
       }
     }
   }
